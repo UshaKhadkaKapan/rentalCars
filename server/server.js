@@ -10,6 +10,15 @@ app.get("/", (req, res) => {
   res.json({
     message: "you reach a e-commerce api",
   });
+
+  app.use((error, req, res, next) => {
+    console.log(error);
+    const status = error.status || 404;
+    res.status(status).json({
+      status: "error",
+      message: error.message,
+    });
+  });
 });
 app.listen(PORT, (error) => {
   error
