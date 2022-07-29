@@ -19,7 +19,7 @@ const rentalUserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    bookSlots: [
+    bookTimeSlots: [
       {
         from: { type: String, required: true },
         to: { type: String, required: true },
