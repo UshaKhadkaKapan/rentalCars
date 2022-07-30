@@ -13,6 +13,7 @@ route.get("/", (req, res, next) => {
 });
 
 route.post("/", (req, res, next) => {
+  console.log(req.body);
   try {
     res.json({
       status: "success",

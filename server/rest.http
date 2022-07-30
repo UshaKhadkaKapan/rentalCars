@@ -1,0 +1,12 @@
+### Admin user registration
+POST http://localhost:8000/api/v1/rentalcarrouter
+Content-Type: application/json
+
+{
+"name": "Tata Altroz",
+    "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/Altroz/7247/1578642800962/front-left-side-47.jpg?tr=w-456",
+    "rentPerHour": 500,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 5
+}
