@@ -7,7 +7,7 @@ import connectMongo from "./src/dbConfig/dbConfig.js";
 connectMongo();
 
 import RentalCarRouter from "./src/Router/RentalCarRouter.js";
-
+app.use(express.json());
 app.use("/api/v1/rentalcarrouter", RentalCarRouter);
 
 app.get("/", (req, res) => {

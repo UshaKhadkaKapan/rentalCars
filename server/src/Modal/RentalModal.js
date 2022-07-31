@@ -1,5 +1,9 @@
-import RentalCarSchema from "./RentalCarSchema.js";
+import rentalCarSchema from "./RentalCarSchema.js";
 
 export const createRentalCarUserDetails = (obj) => {
-  return RentalCarSchema(obj).save();
+  return rentalCarSchema(obj).save();
+};
+
+export const fetchAllCarDetails = () => {
+  return rentalCarSchema.find();
 };

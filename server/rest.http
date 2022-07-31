@@ -1,12 +1,19 @@
+### fetching all the cars details
+GET http://localhost:8000/api/v1/rentalcarrouter
+
+
+
+
+
 ### skak
 POST http://localhost:8000/api/v1/rentalcarrouter
 Content-Type: application/json
 
 {
-"name": "Tata Altroz",
-    "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/Altroz/7247/1578642800962/front-left-side-47.jpg?tr=w-456",
-    "rentPerHour": "500",
+ "name": "Toyota Glanza",
+    "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Toyota/Toyota-Glanza/6902/1559807182519/front-left-side-47.jpg?tr=w-456",
+    "rentPerHour": 500,
     "fuelType": "petrol",
     "bookedTimeSlots": [],
-    "capacity": "5"
+    "capacity": 5
 }

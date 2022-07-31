@@ -1,9 +1,25 @@
 import express from "express";
-import { createRentalCarUserDetails } from "../Modal/RentalModal.js";
+import {
+  createRentalCarUserDetails,
+  fetchAllCarDetails,
+} from "../Modal/RentalModal.js";
 const route = express.Router();
 
+route.get("/", async (req, res, next) => {
+  try {
+    const result = await fetchAllCarDetails();
+    console.log(result);
+    res.json({
+      status: "success",
+      message: "we are able to fetch the data",
+      result,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 route.post("/", async (req, res, next) => {
-  console.log(req.body);
   try {
     const result = await createRentalCarUserDetails(req.body);
     res.json({

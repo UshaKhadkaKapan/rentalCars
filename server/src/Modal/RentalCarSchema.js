@@ -12,7 +12,7 @@ const rentalUserSchema = new mongoose.Schema(
       required: true,
     },
     capacity: {
-      type: Number,
+      type: String,
       required: true,
     },
     fuelType: {
@@ -27,7 +27,7 @@ const rentalUserSchema = new mongoose.Schema(
     ],
 
     rentPerHour: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
