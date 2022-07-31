@@ -9,20 +9,19 @@ connectMongo();
 import RentalCarRouter from "./src/Router/RentalCarRouter.js";
 
 app.use("/api/v1/rentalcarrouter", RentalCarRouter);
-app.get("/", (req, res) => {
-  res.json({
-    message: "you reach a e-commerce api",
-  });
 
-  app.use((error, req, res, next) => {
-    console.log(error);
-    const status = error.status || 404;
-    res.status(status).json({
-      status: "error",
-      message: error.message,
-    });
+app.get("/", (req, res) => {
+  res.json("server is running");
+});
+
+app.use((error, req, res) => {
+  res.status = error.status || 404;
+  res.json({
+    status: error,
+    message: error.message,
   });
 });
+
 app.listen(PORT, (error) => {
   error
     ? console.log(error)
