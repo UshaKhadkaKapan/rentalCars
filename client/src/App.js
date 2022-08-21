@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import BookingCar from "./pages/Booking";
+import "antd/dist/antd.css";
 
 function App() {
   return (
