@@ -1,8 +1,8 @@
 import React from "react";
-import DefaultLayout from "../components/DefaultLayout";
+import { Row, Col, Input, Form } from "antd";
 
 const Login = () => {
-  return <DefaultLayout>Login</DefaultLayout>;
+  return <div className="login"></div>;
 };
 
 export default Login;
