@@ -18,7 +18,7 @@ const HomePage = () => {
         {carDetails.map((car) => {
           return (
             <Col lg={5} sm={24} xs={24}>
-              <div className="car p-2 bs1 mt-3">
+              <div className="car p-2 bs1">
                 <img src={car.image} className="carimg" />
                 <div className="car-content d-flex align-item-center justify-content-between">
                   <div>
