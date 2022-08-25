@@ -34,6 +34,11 @@ p {
   background-color: white;
   color: orangered;
   border: 1px solid orangered !important;
+  padding: 3px !important;
+}
+
+button {
+  padding: 3px !important;
 }
 
 .header {
@@ -69,4 +74,41 @@ p {
   transform: translateY(-200px);
   opacity: 0;
   transition: 0.3s;
+}
+
+.login {
+  background-color: black;
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+.login label,
+.login h1 {
+  color: rgba(255, 255, 255, 0.696) !important;
+}
+
+.login-form {
+  background-color: #1f1f1f;
+}
+
+.login-form input {
+  background-color: #333333;
+  border: none;
+  color: white;
+  opacity: 0.5;
+}
+.login-logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  bottom: 50%;
+  transform: translateY(-50%, -50%);
+  font-size: 45px;
+  opacity: 0.5 !important;
+}
+
+.login a {
+  color: white !important;
+  opacity: 0.5;
 }
