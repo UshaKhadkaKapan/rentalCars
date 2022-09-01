@@ -34,11 +34,16 @@ p {
   background-color: white;
   color: orangered;
   border: 1px solid orangered !important;
-  padding: 3px !important;
+  padding: 5px 15px !important;
+  outline: none !important;
 }
 
 button {
-  padding: 3px !important;
+  padding: 3px 15px !important;
+}
+
+.btn1 :focus {
+  border: none;
 }
 
 .header {
