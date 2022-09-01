@@ -10,8 +10,11 @@ import connectMongo from "./src/dbConfig/dbConfig.js";
 connectMongo();
 
 import RentalCarRouter from "./src/Router/RentalCarRouter.js";
+import UserRouter from "./src/Router/userRouter.js";
+
 app.use(express.json());
 app.use("/api/v1/rentalcarrouter", RentalCarRouter);
+app.use("/api/v1/register", UserRouter);
 
 app.get("/", (req, res) => {
   res.json("server is running");
