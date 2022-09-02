@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
 import { Row, Col } from "antd";
+import { Link } from "react-router-dom";
 const HomePage = () => {
   const { carDetails } = useSelector((state) => state.carDetails);
 
@@ -26,7 +27,9 @@ const HomePage = () => {
                     <p>{car.rentPerHour} Rent Per Hour /-</p>
                   </div>
                   <div>
-                    <button className="btn1 mr-2">Book</button>
+                    <button className="btn1 mr-2">
+                      <Link to={`/booking/${car._id}`}>Book</Link>
+                    </button>
                   </div>
                 </div>
               </div>

@@ -26,15 +26,15 @@ const Login = () => {
             <h1>Login</h1>
             <hr />
             <Form.Item
-              name="user"
-              label="username"
+              name="username"
+              label="Username"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="password"
-              label="password"
+              label="Password"
               rules={[{ required: true }]}
             >
               <Input />
