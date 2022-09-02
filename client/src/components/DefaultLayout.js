@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dropdown, Menu } from "antd";
+import { Button, Dropdown, Menu, Row, Col } from "antd";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../redux/actions/userAction";
 
@@ -34,12 +34,16 @@ const DefaultLayout = ({ children }) => {
   return (
     <div>
       <div className="header bs1">
-        <div className="d-flex justify-content-between">
-          <h1>Renting Cars</h1>
-          <Dropdown overlay={menu} placement="bottom">
-            <Button>Button</Button>
-          </Dropdown>
-        </div>
+        <Row gutter={16} justify="center">
+          <Col lg={20} sm={24} xs={24}>
+            <div className="d-flex justify-content-between">
+              <h1>Renting Cars</h1>
+              <Dropdown overlay={menu} placement="bottom">
+                <Button>Button</Button>
+              </Dropdown>
+            </div>
+          </Col>
+        </Row>
       </div>
       <div className="content">{children}</div>
     </div>
