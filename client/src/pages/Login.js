@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Input, Form } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../redux/actions/userAction";
 

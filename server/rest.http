@@ -17,3 +17,12 @@ Content-Type: application/json
     "bookedTimeSlots": [],
     "capacity": 5
 }
+
+###
+POST http://localhost:8000/api/v1/login
+Content-Type: application/json
+
+{
+    "username":"usha",
+    "password":"Usha123"
+}

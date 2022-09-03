@@ -31,19 +31,18 @@ p {
 
 .btn1 {
   box-shadow: none !important;
-  background-color: white;
-  color: orangered;
+  background-color: white !important;
+  color: orangered !important;
   border: 1px solid orangered !important;
   padding: 5px 15px !important;
   outline: none !important;
 }
+.bt1:focus {
+  border: none;
+}
 
 button {
   padding: 3px 15px !important;
-}
-
-.btn1 :focus {
-  border: none;
 }
 
 .header {
@@ -53,8 +52,8 @@ button {
 
 .header .ant-btn {
   box-shadow: none !important;
-  background-color: white;
-  color: orangered;
+  background-color: white !important;
+  color: orangered !important;
   border: 1px solid orangered !important;
   padding: 5px 15px !important;
   outline: none !important;
@@ -126,4 +125,12 @@ button {
 .login a {
   color: white !important;
   opacity: 0.5;
+}
+
+svg {
+  height: 20px !important;
+  width: 20px !important;
+}
+a {
+  color: orangered !important;
 }

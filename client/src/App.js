@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import BookingCar from "./pages/Booking";
 import "antd/dist/antd.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/booking/:carid" element={<BookingCar />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }
