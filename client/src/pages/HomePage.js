@@ -31,6 +31,7 @@ const HomePage = () => {
 
                   <div>
                     <button className="btn1 mr-2">
+                      Book
                       <Link to={`/booking/${car._id}`}>{user.username}</Link>
                     </button>
                   </div>

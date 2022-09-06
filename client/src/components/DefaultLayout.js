@@ -10,6 +10,8 @@ const DefaultLayout = ({ children }) => {
   //   dispatch(userLoginAction());
   // }, []);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const menu = (
     <Menu>
       <Menu.Item>
@@ -39,7 +41,7 @@ const DefaultLayout = ({ children }) => {
             <div className="d-flex justify-content-between">
               <h1>Renting Cars</h1>
               <Dropdown overlay={menu} placement="bottom">
-                <Button>Button</Button>
+                <Button>{user.username}</Button>
               </Dropdown>
             </div>
           </Col>
