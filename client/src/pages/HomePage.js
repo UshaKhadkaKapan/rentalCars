@@ -31,8 +31,7 @@ const HomePage = () => {
 
                   <div>
                     <button className="btn1 mr-2">
-                      Book
-                      <Link to={`/booking/${car._id}`}>{user.username}</Link>
+                      <Link to={`/booking/${car._id}`}>Book</Link>
                     </button>
                   </div>
                 </div>
