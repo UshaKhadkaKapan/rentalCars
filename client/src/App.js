@@ -6,16 +6,31 @@ import Register from "./pages/Register";
 import BookingCar from "./pages/Booking";
 import "antd/dist/antd.css";
 import { ToastContainer } from "react-toastify";
+import PrivateRouter from "./components/PrivateRouter";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRouter>
+                <HomePage />
+              </PrivateRouter>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/booking/:carid" element={<BookingCar />} />
+          <Route
+            path="/booking/:carid"
+            element={
+              <PrivateRouter>
+                <BookingCar />
+              </PrivateRouter>
+            }
+          />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
