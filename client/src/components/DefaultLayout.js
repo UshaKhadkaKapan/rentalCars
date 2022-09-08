@@ -13,7 +13,7 @@ const DefaultLayout = ({ children }) => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const menu = (
-    <items>
+    <Menu>
       <Menu.Item>
         <a href="/">Home</a>
       </Menu.Item>
@@ -31,7 +31,7 @@ const DefaultLayout = ({ children }) => {
       >
         <li style={{ color: "orangered" }}>Logout</li>
       </Menu.Item>
-    </items>
+    </Menu>
   );
   return (
     <div>

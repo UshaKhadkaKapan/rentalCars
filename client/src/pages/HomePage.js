@@ -5,10 +5,7 @@ import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
 import { Row, Col } from "antd";
 import { Link } from "react-router-dom";
 const HomePage = () => {
-  const user = localStorage.getItem("user");
-  console.log(user);
   const { carDetails } = useSelector((state) => state.carDetails);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

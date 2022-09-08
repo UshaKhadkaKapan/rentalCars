@@ -11,3 +11,11 @@ const PrivateRouter = ({ children }) => {
   );
 };
 export default PrivateRouter;
+
+// export const PrivateRouter = (props) => {
+//   if (localStorage.getItem("user")) {
+//     return <Route {...props} />;
+//   } else {
+//     return <Route to="/login" />;
+//   }
+// };

@@ -39,11 +39,3 @@ function App() {
 }
 
 export default App;
-
-// export const protectedRoute = (props) => {
-//   if (localStorage.getItem("user")) {
-//     return <Route {...props} />;
-//   } else {
-//     return <Route to="/login" />;
-//   }
-// };
