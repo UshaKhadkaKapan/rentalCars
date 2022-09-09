@@ -1,9 +1,10 @@
-import { Col, Row, Divider } from "antd";
+import { Col, Row, Divider, DatePicker } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
+const { RangePicker } = DatePicker;
 
 const Booking = ({ props }) => {
   const { carDetails } = useSelector((state) => state.carDetails);
@@ -23,6 +24,10 @@ const Booking = ({ props }) => {
       setCar(carDetails.find((o) => o._id == carid));
     }
   }, [carDetails]);
+
+  const selectTimeSlots = (values) => {
+    console.log(values);
+  };
   return (
     <DefaultLayout>
       <Row
@@ -43,6 +48,15 @@ const Booking = ({ props }) => {
             <p>Fuel {car.fuelType} </p>
             <p>Max person {car.capacity}</p>
           </div>
+
+          <Divider type="horizontal" dashed>
+            -------Select Time Slot -------
+          </Divider>
+          <RangePicker
+            showTime={{ format: "HH:mm" }}
+            format="MMM DD yyyy HH:mm"
+            onChange={selectTimeSlots}
+          />
         </Col>
       </Row>
     </DefaultLayout>
