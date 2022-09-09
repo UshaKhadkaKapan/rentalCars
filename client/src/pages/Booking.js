@@ -1,3 +1,4 @@
+import { Col, Row, Divider } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -5,8 +6,8 @@ import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
 
 const Booking = ({ props }) => {
-  const [car, setCar] = useState({});
   const { carDetails } = useSelector((state) => state.carDetails);
+  const [car, setCar] = useState({});
   const dispatch = useDispatch();
   const params = useParams();
   console.log(params);
@@ -16,15 +17,34 @@ const Booking = ({ props }) => {
   // const cars = this.props.carDetails[index];
 
   useEffect(() => {
-    dispatch(getCarDetailsAction());
-    if (carDetails.length > 0) {
+    if (carDetails.length == 0) {
+      dispatch(getCarDetailsAction());
+    } else {
       setCar(carDetails.find((o) => o._id == carid));
     }
-  }, [dispatch]);
+  }, [carDetails]);
   return (
     <DefaultLayout>
-      <h1>Booking</h1>
-      <h1>Car name{carid}</h1>
+      <Row
+        justify="center"
+        className="d-flex align-items-center"
+        style={{ minHeight: "90vh" }}
+      >
+        <Col lg={10} sm={24} xs={24}>
+          <img src={car.image} className="carimg2 bs1" />
+        </Col>
+        <Col lg={10} sm={24} xs={24} className="text-right">
+          <Divider type="horizontal" dashed>
+            ------- Car Info -------
+          </Divider>
+          <div style={{ textAlign: "right" }}>
+            <p>{car.name}</p>
+            <p>{car.rentPerHour} Rent per Hour</p>
+            <p>Fuel {car.fuelType} </p>
+            <p>Max person {car.capacity}</p>
+          </div>
+        </Col>
+      </Row>
     </DefaultLayout>
   );
 };
