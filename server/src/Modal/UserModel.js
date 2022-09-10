@@ -7,12 +7,3 @@ export const createUserDetails = (obj) => {
 export const loginDetails = (filter) => {
   return UserSchema.findOne(filter);
 };
-
-// import mongoose from "mongoose";
-
-// const userSchema = new mongoose.Schema({
-//   username: { type: String, required: true },
-//   password: { type: String, required: true },
-// });
-
-// export default mongoose.model("users", userSchema);

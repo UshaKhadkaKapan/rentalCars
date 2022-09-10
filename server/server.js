@@ -11,10 +11,12 @@ connectMongo();
 
 import RentalCarRouter from "./src/Router/RentalCarRouter.js";
 import UserRouter from "./src/Router/userRouter.js";
+import BookingRouter from "./src/Router/BookingRouter.js";
 
 app.use(express.json());
 app.use("/api/v1/rentalcarrouter", RentalCarRouter);
 app.use("/api/v1/register", UserRouter);
+app.use("/api/v1/bookings/bookcar", BookingRouter);
 // app.use("/api/v1", UserRouter);
 
 app.get("/", (req, res) => {
