@@ -1,21 +1,25 @@
-import { Col, Row, Divider, DatePicker } from "antd";
+import { Col, Row, Divider, DatePicker, Checkbox } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
+import moment from "moment";
+import { bookingCarAction } from "../redux/actions/bookingAction";
 const { RangePicker } = DatePicker;
 
 const Booking = ({ props }) => {
   const { carDetails } = useSelector((state) => state.carDetails);
   const [car, setCar] = useState({});
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
+  const [totalHours, setTotalHours] = useState(0);
+  const [driver, setDriver] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(0);
   const dispatch = useDispatch();
   const params = useParams();
   console.log(params);
   const carid = params.carid;
-
-  // const index = props.carDetails.findIndex((e) => e.carid === parseInt(carid));
-  // const cars = this.props.carDetails[index];
 
   useEffect(() => {
     if (carDetails.length == 0) {
@@ -26,7 +30,31 @@ const Booking = ({ props }) => {
   }, [carDetails]);
 
   const selectTimeSlots = (values) => {
-    console.log(values);
+    setFrom(moment(values[0]).format("MMM DD yyyy HH:mm"));
+    setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
+    setTotalHours(values[1].diff(values[0], "hours"));
+  };
+
+  useEffect(() => {
+    setTotalAmount(totalHours * car.rentPerHour);
+    if (driver) {
+      setTotalAmount(totalAmount + 30 * totalHours);
+    }
+  }, [driver, totalHours]);
+
+  const bookNow = () => {
+    const reqObj = {
+      user: JSON.parse(localStorage.getItem("user"))._id,
+      car: car._id,
+      totalHours,
+      totalAmount,
+      driverRequire: driver,
+      bookedTimeSlots: {
+        from,
+        to,
+      },
+    };
+    dispatch(bookingCarAction(reqObj));
   };
   return (
     <DefaultLayout>
@@ -35,8 +63,8 @@ const Booking = ({ props }) => {
         className="d-flex align-items-center"
         style={{ minHeight: "90vh" }}
       >
-        <Col lg={10} sm={24} xs={24}>
-          <img src={car.image} className="carimg2 bs1" />
+        <Col lg={10} sm={24} xs={24} className="p-3">
+          <img src={car.image} className="carimg2 bs1 w-100" />
         </Col>
         <Col lg={10} sm={24} xs={24} className="text-right">
           <Divider type="horizontal" dashed>
@@ -57,6 +85,32 @@ const Booking = ({ props }) => {
             format="MMM DD yyyy HH:mm"
             onChange={selectTimeSlots}
           />
+          <br />
+          <div className="text-right">
+            <p>
+              Total Hours:<b>{totalHours}</b>
+            </p>
+            <p>
+              Rent Per Hour:<b>{car.rentPerHour}</b>
+            </p>
+            <p>
+              <Checkbox
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setDriver(true);
+                  } else {
+                    setDriver(false);
+                  }
+                }}
+              >
+                Driver Required
+              </Checkbox>
+            </p>
+            <h3>Total Amount:{totalAmount}</h3>
+            <button className="btn1" onClick={bookNow}>
+              Book Now
+            </button>
+          </div>
         </Col>
       </Row>
     </DefaultLayout>

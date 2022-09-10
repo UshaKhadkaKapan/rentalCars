@@ -4,6 +4,7 @@ const rootUrl = "http://localhost:8000/api/v1";
 const cDEP = rootUrl + "/rentalcarrouter";
 const registerEP = rootUrl + "/register";
 const loginEP = registerEP + "/login";
+const bookingEP = rootUrl + "/bookings/bookcar";
 
 const apiProcessor = async (method, url, data) => {
   try {
@@ -30,4 +31,8 @@ export const postClientRegisterDetails = (data) => {
 
 export const postClientLoginDetails = (data) => {
   return apiProcessor("post", loginEP, data);
+};
+
+export const postBookingCar = (data) => {
+  return apiProcessor("post", bookingEP, data);
 };
