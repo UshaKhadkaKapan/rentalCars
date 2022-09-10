@@ -86,7 +86,7 @@ const Booking = ({ props }) => {
             onChange={selectTimeSlots}
           />
           <br />
-          <div className="text-right">
+          <div style={{ textAlign: "right" }}>
             <p>
               Total Hours:<b>{totalHours}</b>
             </p>
