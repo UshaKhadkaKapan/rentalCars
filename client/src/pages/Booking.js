@@ -6,6 +6,7 @@ import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
 import moment from "moment";
 import { bookingCarAction } from "../redux/actions/bookingAction";
+import StripeCheckout from "react-stripe-checkout";
 const { RangePicker } = DatePicker;
 
 const Booking = ({ props }) => {
