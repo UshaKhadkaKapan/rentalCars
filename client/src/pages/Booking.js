@@ -124,7 +124,7 @@ const Booking = ({ props }) => {
               <StripeCheckout
                 token={onToken}
                 shippingAddress
-                currency="Aus Dollor"
+                currency="$"
                 amount={totalAmount * 100}
                 stripeKey="pk_test_51LhXoAChovQ5Da22SDJ0QKewkTila2tWaKtFfAWWtq1Sa8go6dhRl9Wai9CemOcfp0GugOIBp7O59aeiG87xWpas00tXCgqOyI"
               >
