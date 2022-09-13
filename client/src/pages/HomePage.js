@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
+import { Col, Row, Divider, DatePicker, Checkbox } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
-import { Row, Col } from "antd";
+
 import { Link } from "react-router-dom";
+const { RangePicker } = DatePicker;
 const HomePage = () => {
   const { carDetails } = useSelector((state) => state.carDetails);
   const dispatch = useDispatch();
@@ -14,6 +16,9 @@ const HomePage = () => {
 
   return (
     <DefaultLayout>
+      <Row>
+        <Col lg={20} sm={24}></Col>
+      </Row>
       <Row justify="center" gutter={16} className="mt-5">
         {carDetails.map((car) => {
           return (
