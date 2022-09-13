@@ -86,7 +86,34 @@ const Booking = ({ props }) => {
             onChange={selectTimeSlots}
           />
           <br />
-          <div style={{ textAlign: "right" }}>
+          {from && to && (
+            <div style={{ textAlign: "right" }}>
+              <p>
+                Total Hours:<b>{totalHours}</b>
+              </p>
+              <p>
+                Rent Per Hour:<b>{car.rentPerHour}</b>
+              </p>
+              <p>
+                <Checkbox
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setDriver(true);
+                    } else {
+                      setDriver(false);
+                    }
+                  }}
+                >
+                  Driver Required
+                </Checkbox>
+              </p>
+              <h3>Total Amount:{totalAmount}</h3>
+              <button className="btn1" onClick={bookNow}>
+                Book Now
+              </button>
+            </div>
+          )}
+          {/* <div style={{ textAlign: "right" }}>
             <p>
               Total Hours:<b>{totalHours}</b>
             </p>
@@ -110,7 +137,7 @@ const Booking = ({ props }) => {
             <button className="btn1" onClick={bookNow}>
               Book Now
             </button>
-          </div>
+          </div> */}
         </Col>
       </Row>
     </DefaultLayout>

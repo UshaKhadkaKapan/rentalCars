@@ -9,6 +9,5 @@ export const fetchAllCarDetails = () => {
 };
 
 export const updateBookingSlot = (_id, obj) => {
-  console.log(_id);
   return rentalCarSchema.findOneAndUpdate(_id, obj, { new: true });
 };

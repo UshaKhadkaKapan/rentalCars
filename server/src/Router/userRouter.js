@@ -26,7 +26,7 @@ route.post("/", async (req, res, next) => {
 route.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    console.log(username, password);
+
     const user = await loginDetails({ username, password });
 
     if (user) {

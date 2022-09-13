@@ -8,9 +8,11 @@ route.post("/", async (req, res, next) => {
   try {
     console.log(req.body);
     const newBooking = await bookingCar(req.body);
-    const { car } = req.body;
-    const { bookedTimeSlots } = req.body;
-    console.log(bookedTimeSlots);
+    const { car, bookedTimeSlots, ...rest } = req.body;
+    console.log(rest);
+    // const { car } = req.body;
+    // const { bookedTimeSlots } = req.body;
+    // console.log(bookedTimeSlots);
     const updateTimeSlotsOfRentingCar = await updateBookingSlot(
       car,
       bookedTimeSlots
