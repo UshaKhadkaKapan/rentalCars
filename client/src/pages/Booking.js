@@ -1,4 +1,4 @@
-import { Col, Row, Divider, DatePicker, Checkbox } from "antd";
+import { Col, Row, Divider, DatePicker, Checkbox, Modal } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -85,7 +85,9 @@ const Booking = ({ props }) => {
             format="MMM DD yyyy HH:mm"
             onChange={selectTimeSlots}
           />
+
           <br />
+          <button className="btn1 mt-2">See Book Slots</button>
           {from && to && (
             <div style={{ textAlign: "right" }}>
               <p>
@@ -113,33 +115,9 @@ const Booking = ({ props }) => {
               </button>
             </div>
           )}
-          {/* <div style={{ textAlign: "right" }}>
-            <p>
-              Total Hours:<b>{totalHours}</b>
-            </p>
-            <p>
-              Rent Per Hour:<b>{car.rentPerHour}</b>
-            </p>
-            <p>
-              <Checkbox
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setDriver(true);
-                  } else {
-                    setDriver(false);
-                  }
-                }}
-              >
-                Driver Required
-              </Checkbox>
-            </p>
-            <h3>Total Amount:{totalAmount}</h3>
-            <button className="btn1" onClick={bookNow}>
-              Book Now
-            </button>
-          </div> */}
         </Col>
       </Row>
+      <Modal></Modal>
     </DefaultLayout>
   );
 };
