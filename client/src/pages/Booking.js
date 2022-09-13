@@ -16,9 +16,10 @@ const Booking = ({ props }) => {
   const [totalHours, setTotalHours] = useState(0);
   const [driver, setDriver] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const params = useParams();
-  console.log(params);
+
   const carid = params.carid;
 
   useEffect(() => {
@@ -87,7 +88,14 @@ const Booking = ({ props }) => {
           />
 
           <br />
-          <button className="btn1 mt-2">See Book Slots</button>
+          <button
+            className="btn1 mt-2"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            See Book Slots
+          </button>
           {from && to && (
             <div style={{ textAlign: "right" }}>
               <p>
@@ -117,7 +125,36 @@ const Booking = ({ props }) => {
           )}
         </Col>
       </Row>
-      <Modal></Modal>
+      {car.name && (
+        <Modal
+          visible={showModal}
+          closable={false}
+          footer={false}
+          title="Booked Time Slots"
+        >
+          {car && (
+            <div className="p-2">
+              {car.bookedTimeSlots.map((slot) => {
+                return (
+                  <button className="btn1 mt-2">
+                    {slot.from} - {slot.to}
+                  </button>
+                );
+              })}
+              <div className="text-right">
+                <button
+                  className="btn-1"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
+        </Modal>
+      )}
     </DefaultLayout>
   );
 };
