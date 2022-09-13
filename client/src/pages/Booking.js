@@ -44,8 +44,9 @@ const Booking = ({ props }) => {
     }
   }, [driver, totalHours]);
 
-  const bookNow = () => {
+  const onToken = (token) => {
     const reqObj = {
+      token,
       user: JSON.parse(localStorage.getItem("user"))._id,
       car: car._id,
       totalHours,
@@ -119,9 +120,16 @@ const Booking = ({ props }) => {
                 </Checkbox>
               </p>
               <h3>Total Amount:{totalAmount}</h3>
-              <button className="btn1" onClick={bookNow}>
-                Book Now
-              </button>
+
+              <StripeCheckout
+                token={onToken}
+                shippingAddress
+                currency="Aus Dollor"
+                amount={totalAmount * 100}
+                stripeKey="pk_test_51LhXoAChovQ5Da22SDJ0QKewkTila2tWaKtFfAWWtq1Sa8go6dhRl9Wai9CemOcfp0GugOIBp7O59aeiG87xWpas00tXCgqOyI"
+              >
+                <button className="btn1">Book Now</button>
+              </StripeCheckout>
             </div>
           )}
         </Col>
