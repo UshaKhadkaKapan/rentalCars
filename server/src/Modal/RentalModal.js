@@ -7,3 +7,8 @@ export const createRentalCarUserDetails = (obj) => {
 export const fetchAllCarDetails = () => {
   return rentalCarSchema.find();
 };
+
+export const updateBookingSlot = (_id, obj) => {
+  console.log(_id);
+  return rentalCarSchema.findOneAndUpdate(_id, obj, { new: true });
+};
