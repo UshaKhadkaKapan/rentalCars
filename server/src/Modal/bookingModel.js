@@ -4,6 +4,10 @@ export const bookingCar = (obj) => {
   return bookingCarSchema(obj).save();
 };
 
-// export const loginDetails = (filter) => {
-//   return bookingCarSchema.findOne(filter);
-// };
+export const stripeCreate = (obj) => {
+  return bookingCarSchema(obj).save();
+};
+
+export const paymentDetailsCreate = (obj) => {
+  return bookingCarSchema(obj).save();
+};

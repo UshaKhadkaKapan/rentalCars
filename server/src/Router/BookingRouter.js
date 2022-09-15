@@ -1,5 +1,9 @@
 import express from "express";
-import { bookingCar } from "../Modal/bookingModel.js";
+import {
+  bookingCar,
+  paymentDetailsCreate,
+  stripeCreate,
+} from "../Modal/bookingModel.js";
 import { updateBookingSlot } from "../Modal/RentalModal.js";
 import Stripe from "stripe";
 import { v4 as uuidv4 } from "uuid";
@@ -16,24 +20,42 @@ route.post("/", async (req, res, next) => {
 
     // token
     const { token } = req.body;
-    const customer = await stripe.customer({
-      email: token.email,
-      source: token.id,
-    });
+    console.log(token);
+    const email = token.email;
+    const source = token.id;
+    const customer = await stripeCreate({ email, source });
+    // const customer = await stripe.customer.create({
+    //   email: token.email,
+    //   source: token.id,
+    // });
 
-    const payment = await stripe.create(
-      {
+    const details =
+      ({
         amount: req.body.totalAmount * 100,
-        currency: "$",
+        currency: "AUD",
         customer: customer.id,
         receipt_email: token.email,
       },
       {
         idempotencyKey: uniqueKey,
-      }
-    );
+      });
+
+    const payment = await paymentDetailsCreate(details);
+    // const payment = await stripe.create(
+    //   {
+    //     amount: req.body.totalAmount * 100,
+    //     currency: "AUD",
+    //     customer: customer.id,
+    //     receipt_email: token.email,
+    //   },
+    //   {
+    //     idempotencyKey: uniqueKey,
+    //   }
+    // );
 
     if (payment) {
+      // here source is customer
+      req.body.transactionId = payment.source.id;
       const newBooking = await bookingCar(req.body);
       const { car, bookedTimeSlots, ...rest } = req.body;
       console.log(rest);
@@ -44,7 +66,7 @@ route.post("/", async (req, res, next) => {
         car,
         bookedTimeSlots
       );
-      // console.log(updateTimeSlotsOfRentingCar);
+      console.log(updateTimeSlotsOfRentingCar);
       if (newBooking) {
         return res.json({
           status: "success",
