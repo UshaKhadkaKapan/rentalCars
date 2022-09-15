@@ -1,9 +1,5 @@
 import express from "express";
-import {
-  bookingCar,
-  paymentDetailsCreate,
-  stripeCreate,
-} from "../Modal/bookingModel.js";
+import { bookingCar } from "../Modal/bookingModel.js";
 import { updateBookingSlot } from "../Modal/RentalModal.js";
 import Stripe from "stripe";
 import { v4 as uuidv4 } from "uuid";
@@ -13,36 +9,23 @@ const route = express.Router();
 
 route.post("/", async (req, res, next) => {
   try {
-    console.log(req.body);
-
     // unique key to get differnt id
     const uniqueKey = uuidv4();
 
     // token
     const { token } = req.body;
-    console.log(token);
-    const email = token.email;
-    const source = token.id;
-    const customer = await stripeCreate({ email, source });
-    // const customer = await stripe.customer.create({
-    //   email: token.email,
-    //   source: token.id,
-    // });
 
-    const details =
-      ({
-        amount: req.body.totalAmount * 100,
-        currency: "AUD",
-        customer: customer.id,
-        receipt_email: token.email,
-      },
-      {
-        idempotencyKey: uniqueKey,
-      });
+    // const email = token.email;
+    // const source = token.card;
+    // console.log(source);
+    // const customer = await stripeCreate({ email, source });
+    const customer = await stripe.customer.create({
+      email: token.email,
+      source: token.id,
+    });
 
-    const payment = await paymentDetailsCreate(details);
-    // const payment = await stripe.create(
-    //   {
+    // const details =
+    //   ({
     //     amount: req.body.totalAmount * 100,
     //     currency: "AUD",
     //     customer: customer.id,
@@ -50,15 +33,28 @@ route.post("/", async (req, res, next) => {
     //   },
     //   {
     //     idempotencyKey: uniqueKey,
-    //   }
-    // );
+    //   });
+
+    // const payment = await paymentDetailsCreate(details);
+    // console.log(payment);
+    const payment = await stripe.create(
+      {
+        amount: req.body.totalAmount * 100,
+        currency: "AUD",
+        customer: customer.id,
+        receipt_email: token.email,
+      },
+      {
+        idempotencyKey: uniqueKey,
+      }
+    );
 
     if (payment) {
       // here source is customer
       req.body.transactionId = payment.source.id;
       const newBooking = await bookingCar(req.body);
       const { car, bookedTimeSlots, ...rest } = req.body;
-      console.log(rest);
+
       // const { car } = req.body;
       // const { bookedTimeSlots } = req.body;
       // console.log(bookedTimeSlots);

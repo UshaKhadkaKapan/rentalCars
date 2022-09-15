@@ -45,6 +45,7 @@ const Booking = ({ props }) => {
   }, [driver, totalHours]);
 
   const onToken = (token) => {
+    console.log(token);
     const reqObj = {
       token,
       user: JSON.parse(localStorage.getItem("user"))._id,
