@@ -31,4 +31,16 @@ route.post("/", async (req, res, next) => {
   }
 });
 
+route.post("/addcar", async (req, res, next) => {
+  try {
+    const newCar = await createRentalCarUserDetails(req.body);
+    res.json({
+      status: "success",
+      message: "Cars data has been added",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default route;

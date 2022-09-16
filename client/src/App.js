@@ -8,6 +8,7 @@ import "antd/dist/antd.css";
 import { ToastContainer } from "react-toastify";
 import PrivateRouter from "./components/PrivateRouter";
 import UserBookingPages from "./pages/UserBookingPages";
+import AddCar from "./pages/AddCar";
 
 function App() {
   return (
@@ -37,6 +38,15 @@ function App() {
             element={
               <PrivateRouter>
                 <UserBookingPages />
+              </PrivateRouter>
+            }
+          />
+
+          <Route
+            path="/addcar"
+            element={
+              <PrivateRouter>
+                <AddCar />
               </PrivateRouter>
             }
           />

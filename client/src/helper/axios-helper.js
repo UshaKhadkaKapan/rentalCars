@@ -6,6 +6,7 @@ const registerEP = rootUrl + "/register";
 const loginEP = registerEP + "/login";
 const bookingEP = rootUrl + "/bookings/bookcar";
 const bookingDetailsEP = bookingEP + "/getallbooking";
+const adminAddCarEP = cDEP + "/addcar";
 
 const apiProcessor = async (method, url, data) => {
   try {
@@ -40,4 +41,8 @@ export const postBookingCar = (data) => {
 
 export const getBookingDetails = () => {
   return apiProcessor("get", bookingDetailsEP);
+};
+
+export const postCarDetailAdmin = (data) => {
+  return apiProcessor("post", adminAddCarEP, data);
 };
