@@ -15,29 +15,12 @@ route.post("/", async (req, res, next) => {
     // token
     const { token } = req.body;
 
-    // const email = token.email;
-    // const source = token.card;
-    // console.log(source);
-    // const customer = await stripeCreate({ email, source });
-    const customer = await stripe.customer.create({
+    const customer = await stripe.customers.create({
       email: token.email,
       source: token.id,
     });
 
-    // const details =
-    //   ({
-    //     amount: req.body.totalAmount * 100,
-    //     currency: "AUD",
-    //     customer: customer.id,
-    //     receipt_email: token.email,
-    //   },
-    //   {
-    //     idempotencyKey: uniqueKey,
-    //   });
-
-    // const payment = await paymentDetailsCreate(details);
-    // console.log(payment);
-    const payment = await stripe.create(
+    const payment = await stripe.charges.create(
       {
         amount: req.body.totalAmount * 100,
         currency: "AUD",
@@ -55,14 +38,11 @@ route.post("/", async (req, res, next) => {
       const newBooking = await bookingCar(req.body);
       const { car, bookedTimeSlots, ...rest } = req.body;
 
-      // const { car } = req.body;
-      // const { bookedTimeSlots } = req.body;
-      // console.log(bookedTimeSlots);
       const updateTimeSlotsOfRentingCar = await updateBookingSlot(
         car,
         bookedTimeSlots
       );
-      console.log(updateTimeSlotsOfRentingCar);
+
       if (newBooking) {
         return res.json({
           status: "success",

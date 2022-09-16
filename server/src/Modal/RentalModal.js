@@ -9,5 +9,13 @@ export const fetchAllCarDetails = () => {
 };
 
 export const updateBookingSlot = (_id, obj) => {
-  return rentalCarSchema.findOneAndUpdate(_id, obj, { new: true });
+  return rentalCarSchema.findByIdAndUpdate(
+    _id,
+    {
+      $push: {
+        bookedTimeSlots: obj,
+      },
+    },
+    { new: true }
+  );
 };
