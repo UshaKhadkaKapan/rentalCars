@@ -1,15 +1,8 @@
 import React from "react";
 import { Button, Dropdown, Menu, Row, Col } from "antd";
-import { useDispatch } from "react-redux";
-import { userLoginAction } from "../redux/actions/userAction";
+import { Link } from "react-router-dom";
 
 const DefaultLayout = ({ children }) => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(userLoginAction());
-  // }, []);
-
   const user = JSON.parse(localStorage.getItem("user"));
 
   const menu = (
@@ -39,7 +32,16 @@ const DefaultLayout = ({ children }) => {
         <Row gutter={16} justify="center">
           <Col lg={20} sm={24} xs={24}>
             <div className="d-flex justify-content-between">
-              <h1>Renting Cars</h1>
+              <h5>
+                <b>
+                  <Link
+                    to="/"
+                    style={{ color: "orangered", textDecoration: "none" }}
+                  >
+                    Renting Cars
+                  </Link>
+                </b>
+              </h5>
               <Dropdown overlay={menu} placement="bottom">
                 <Button>{user.username}</Button>
               </Dropdown>
