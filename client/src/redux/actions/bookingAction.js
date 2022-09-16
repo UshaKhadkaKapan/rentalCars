@@ -7,6 +7,9 @@ export const bookingCarAction = (obj) => async (dispatch) => {
 
   if (status === "success") {
     toast.success(message);
+    setTimeout(() => {
+      window.location.href = "/userBooking";
+    }, 500);
   } else {
     toast.error(message);
   }

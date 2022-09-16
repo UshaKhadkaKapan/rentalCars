@@ -5,5 +5,5 @@ export const bookingCar = (obj) => {
 };
 
 export const fetchAllBookingData = () => {
-  return bookingCarSchema.find();
+  return bookingCarSchema.find().populate("car");
 };

@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const bookingCarSchema = new mongoose.Schema(
   {
-    car: { type: mongoose.Schema.Types.ObjectID, ref: "cars" },
-    user: { type: mongoose.Schema.Types.ObjectID, ref: "users" },
+    car: { type: mongoose.Schema.Types.ObjectID, ref: "Rental-Cars-User" },
+    user: { type: mongoose.Schema.Types.ObjectID, ref: "User-details" },
     bookedTimeSlots: {
       from: { type: String },
       to: { type: String },
