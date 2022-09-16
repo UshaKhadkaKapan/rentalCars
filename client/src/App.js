@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import PrivateRouter from "./components/PrivateRouter";
 import UserBookingPages from "./pages/UserBookingPages";
 import AddCar from "./pages/AddCar";
+import AdminHome from "./pages/AdminHome";
 
 function App() {
   return (
@@ -47,6 +48,15 @@ function App() {
             element={
               <PrivateRouter>
                 <AddCar />
+              </PrivateRouter>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <PrivateRouter>
+                <AdminHome />
               </PrivateRouter>
             }
           />
