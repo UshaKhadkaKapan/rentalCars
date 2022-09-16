@@ -7,6 +7,7 @@ import BookingCar from "./pages/Booking";
 import "antd/dist/antd.css";
 import { ToastContainer } from "react-toastify";
 import PrivateRouter from "./components/PrivateRouter";
+import UserBookingPages from "./pages/UserBookingPages";
 
 function App() {
   return (
@@ -28,6 +29,14 @@ function App() {
             element={
               <PrivateRouter>
                 <BookingCar />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/userBooking"
+            element={
+              <PrivateRouter>
+                <UserBookingPages />
               </PrivateRouter>
             }
           />

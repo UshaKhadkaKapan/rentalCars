@@ -1,5 +1,5 @@
 import express from "express";
-import { bookingCar } from "../Modal/bookingModel.js";
+import { bookingCar, fetchAllBookingData } from "../Modal/bookingModel.js";
 import { updateBookingSlot } from "../Modal/RentalModal.js";
 import Stripe from "stripe";
 import { v4 as uuidv4 } from "uuid";
@@ -61,6 +61,20 @@ route.post("/", async (req, res, next) => {
         message: "Booking car is failed",
       });
     }
+  } catch (error) {
+    next(error);
+  }
+});
+
+route.get("/getallbooking", async (req, res, next) => {
+  try {
+    const result = await fetchAllBookingData();
+    console.log(result);
+    res.json({
+      status: "success",
+      message: "we are able to fetch the data",
+      result,
+    });
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
-import { postBookingCar } from "../../helper/axios-helper";
+import { getBookingDetails, postBookingCar } from "../../helper/axios-helper";
+import { setBookingDetails } from "../sliceReducer/bookingDetailsReducer";
 
 export const bookingCarAction = (obj) => async (dispatch) => {
   const { status, message, newBooking } = await postBookingCar(obj);
@@ -9,4 +10,10 @@ export const bookingCarAction = (obj) => async (dispatch) => {
   } else {
     toast.error(message);
   }
+};
+
+export const getBookingDetailsAction = () => async (dispatch) => {
+  const { status, message, result } = await getBookingDetails();
+
+  status === "success" && dispatch(setBookingDetails(result));
 };
