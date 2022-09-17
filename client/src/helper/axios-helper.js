@@ -7,6 +7,7 @@ const loginEP = registerEP + "/login";
 const bookingEP = rootUrl + "/bookings/bookcar";
 const bookingDetailsEP = bookingEP + "/getallbooking";
 const adminAddCarEP = cDEP + "/addcar";
+const adminEditCarEP = cDEP + "/editcar";
 
 const apiProcessor = async (method, url, data) => {
   try {
@@ -45,4 +46,8 @@ export const getBookingDetails = () => {
 
 export const postCarDetailAdmin = (data) => {
   return apiProcessor("post", adminAddCarEP, data);
+};
+
+export const editCarDetailAdmin = (data) => {
+  return apiProcessor("post", adminEditCarEP, data);
 };

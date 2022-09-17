@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import DefaultLayout from "../components/DefaultLayout.js";
 import {
   addCarDetailsAction,
+  editCarDetailsAction,
   getCarDetailsAction,
 } from "../redux/actions/carDetailsAction.js";
 
@@ -27,9 +28,9 @@ const EditCar = () => {
   }, [carDetails]);
 
   const onFinish = async (value) => {
-    console.log(value);
+    value._id = car._id;
     value.bookedTimeSlots = [];
-    dispatch(addCarDetailsAction(value));
+    dispatch(editCarDetailsAction(value));
   };
   return (
     <DefaultLayout>
