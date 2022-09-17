@@ -15,12 +15,13 @@ const EditCar = () => {
   const params = useParams();
   const carid = params.carid;
   const [car, setCar] = useState();
-  const [totalCars, setTotalCars] = useState();
+  const [totalCars, setTotalCars] = useState([]);
 
   useEffect(() => {
     if (carDetails.length == 0) {
       dispatch(getCarDetailsAction());
     } else {
+      setTotalCars(carDetails);
       setCar(carDetails.find((o) => o._id == carid));
     }
   }, [carDetails]);
@@ -32,56 +33,60 @@ const EditCar = () => {
   };
   return (
     <DefaultLayout>
-      <Row justify="center mt-5">
+      <Row justify="center ">
         <Col lg={12} sm={24} xs={24} className="p-2">
-          <Form
-            initialValues={car}
-            className="bs1 p-2"
-            layout="vertical"
-            onFinish={onFinish}
-          >
-            <h3>Edit Car</h3>
-            <hr />
-            <Form.Item
-              name="name"
-              label="Car name"
-              rules={[{ required: true }]}
+          {totalCars.length > 0 && (
+            <Form
+              initialValues={car}
+              className="bs1 p-2"
+              layout="vertical"
+              onFinish={onFinish}
             >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="image"
-              label="Image url"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="rentPerHour"
-              label="Rent per hour"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="capacity"
-              label="Capacity"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="fuelType"
-              label="Fuel Type"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
+              <h3>Edit Car</h3>
+              {car.name}
+              {carDetails.length}
+              <hr />
+              <Form.Item
+                name="name"
+                label="Car name"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="image"
+                label="Image url"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="rentPerHour"
+                label="Rent per hour"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="capacity"
+                label="Capacity"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="fuelType"
+                label="Fuel Type"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
 
-            <div className="text-right">
-              <button className="btn1">Edit Car</button>
-            </div>
-          </Form>
+              <div className="text-right">
+                <button className="btn1">Edit Car</button>
+              </div>
+            </Form>
+          )}
         </Col>
       </Row>
     </DefaultLayout>
