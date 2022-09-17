@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const AdminHome = () => {
   const { carDetails } = useSelector((state) => state.carDetails);
@@ -33,9 +34,16 @@ const AdminHome = () => {
                     <p>{car.rentPerHour} Rent Per Hour /-</p>
                   </div>
 
-                  <div>
-                    <DeleteOutlined className="mr-3" />
-                    <EditOutlined />
+                  <div className="mr-4">
+                    <Link to={`/editcar/${car._id}`}>
+                      <EditOutlined
+                        className="mr-3"
+                        style={{ color: "green", cursor: "pointer" }}
+                      />
+                    </Link>
+                    <DeleteOutlined
+                      style={{ color: "red", cursor: "pointer" }}
+                    />
                   </div>
                 </div>
               </div>

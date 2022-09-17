@@ -10,6 +10,7 @@ import PrivateRouter from "./components/PrivateRouter";
 import UserBookingPages from "./pages/UserBookingPages";
 import AddCar from "./pages/AddCar";
 import AdminHome from "./pages/AdminHome";
+import EditCar from "./pages/EditCar";
 
 function App() {
   return (
@@ -57,6 +58,15 @@ function App() {
             element={
               <PrivateRouter>
                 <AdminHome />
+              </PrivateRouter>
+            }
+          />
+
+          <Route
+            path="/editcar/:carid"
+            element={
+              <PrivateRouter>
+                <EditCar />
               </PrivateRouter>
             }
           />
