@@ -50,6 +50,11 @@ const DefaultLayout = ({ children }) => {
         </Row>
       </div>
       <div className="content">{children}</div>
+      <div className="footer text-center">
+        <hr />
+        <p>Design and Developed by 💖</p>
+        <p>Usha Khadka</p>
+      </div>
     </div>
   );
 };

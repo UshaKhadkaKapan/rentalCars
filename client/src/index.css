@@ -148,3 +148,8 @@ svg {
 a {
   color: orangered !important;
 }
+
+.footer {
+  background-color: rgba(177, 191, 156, 0.326);
+  padding: 10px;
+}
