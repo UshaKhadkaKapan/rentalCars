@@ -8,6 +8,7 @@ const bookingEP = rootUrl + "/bookings/bookcar";
 const bookingDetailsEP = bookingEP + "/getallbooking";
 const adminAddCarEP = cDEP + "/addcar";
 const adminEditCarEP = cDEP + "/editcar";
+const adminDeleteCarEP = cDEP + "/deletecar";
 
 const apiProcessor = async (method, url, data) => {
   try {
@@ -50,4 +51,8 @@ export const postCarDetailAdmin = (data) => {
 
 export const editCarDetailAdmin = (data) => {
   return apiProcessor("post", adminEditCarEP, data);
+};
+
+export const deleteCarDetailAdmin = (data) => {
+  return apiProcessor("post", adminDeleteCarEP, data);
 };

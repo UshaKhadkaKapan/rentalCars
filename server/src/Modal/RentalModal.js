@@ -29,3 +29,7 @@ export const editBookingCar = (_id, editData) => {
     capacity: editData.capacity,
   });
 };
+
+export const deleteCar = (_id) => {
+  return rentalCarSchema.findByIdAndDelete(_id);
+};

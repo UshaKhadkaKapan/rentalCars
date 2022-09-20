@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
-import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
+import {
+  deleteCarDetailsAction,
+  getCarDetailsAction,
+} from "../redux/actions/carDetailsAction";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { message, Popconfirm } from "antd";
 import { Link } from "react-router-dom";
@@ -52,9 +55,18 @@ const AdminHome = () => {
                         style={{ color: "green", cursor: "pointer" }}
                       />
                     </Link>
-                    <DeleteOutlined
-                      style={{ color: "red", cursor: "pointer" }}
-                    />
+                    <Popconfirm
+                      title="Are you sure to delete this Car?"
+                      onConfirm={() => {
+                        dispatch(deleteCarDetailsAction({ carid: car._id }));
+                      }}
+                      okText="Yes"
+                      cancelText="No"
+                    >
+                      <DeleteOutlined
+                        style={{ color: "red", cursor: "pointer" }}
+                      />
+                    </Popconfirm>
                   </div>
                 </div>
               </div>

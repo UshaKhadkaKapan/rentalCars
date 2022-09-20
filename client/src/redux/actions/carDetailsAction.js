@@ -1,4 +1,5 @@
 import {
+  deleteCarDetailAdmin,
   editCarDetailAdmin,
   getCardetails,
   postCarDetailAdmin,
@@ -27,6 +28,19 @@ export const addCarDetailsAction = (obj) => async (dispatch) => {
 
 export const editCarDetailsAction = (obj) => async (dispatch) => {
   const { status, message } = await editCarDetailAdmin(obj);
+
+  if (status === "success") {
+    toast.success(message);
+    setTimeout(() => {
+      window.location.href = "/admin";
+    }, 500);
+  } else {
+    toast.error(message);
+  }
+};
+
+export const deleteCarDetailsAction = (carid) => async (dispatch) => {
+  const { status, message } = await deleteCarDetailAdmin(carid);
 
   if (status === "success") {
     toast.success(message);

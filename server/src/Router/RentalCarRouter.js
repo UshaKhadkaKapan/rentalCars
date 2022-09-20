@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createRentalCarUserDetails,
+  deleteCar,
   editBookingCar,
   fetchAllCarDetails,
 } from "../Modal/RentalModal.js";
@@ -62,6 +63,20 @@ route.post("/editcar", async (req, res, next) => {
     res.json({
       status: "success",
       message: "Cars data has been edit",
+      result,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+route.post("/deletecar", async (req, res, next) => {
+  try {
+    const _id = req.body.carid;
+    const result = await deleteCar(_id);
+    res.json({
+      status: "success",
+      message: "Cars data has been deleted",
       result,
     });
   } catch (error) {
