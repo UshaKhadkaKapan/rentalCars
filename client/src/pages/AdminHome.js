@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
 import { getCarDetailsAction } from "../redux/actions/carDetailsAction";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { message, Popconfirm } from "antd";
 import { Link } from "react-router-dom";
 
 const AdminHome = () => {
@@ -22,6 +23,16 @@ const AdminHome = () => {
 
   return (
     <DefaultLayout>
+      <Row justify="center" gutter={16} className="mt-2">
+        <Col lg={20} sm={24}>
+          <div className="d-flex justify-content-between align-items-center">
+            <h3 className="mt-1 mr-2">Admin Panel</h3>
+            <button className="btn1">
+              <a href="/addcar">ADD CAR</a>
+            </button>
+          </div>
+        </Col>
+      </Row>
       <Row justify="center" gutter={16}>
         {totalCars.map((car) => {
           return (
@@ -31,7 +42,7 @@ const AdminHome = () => {
                 <div className="car-content d-flex align-item-center justify-content-between">
                   <div>
                     <p>{car.name}</p>
-                    <p>{car.rentPerHour} Rent Per Hour /-</p>
+                    <p> Rent Per Hour {car.rentPerHour} /-</p>
                   </div>
 
                   <div className="mr-4">

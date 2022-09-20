@@ -14,7 +14,7 @@ const AddCar = () => {
   };
   return (
     <DefaultLayout>
-      <Row justify="center mt-5">
+      <Row justify="center">
         <Col lg={12} sm={24} xs={24} className="p-2">
           <Form className="bs1 p-2" layout="vertical" onFinish={onFinish}>
             <h3>Add New Car</h3>

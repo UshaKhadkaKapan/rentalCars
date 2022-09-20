@@ -66,7 +66,7 @@ const HomePage = () => {
                 <div className="car-content d-flex align-item-center justify-content-between">
                   <div>
                     <p>{car.name}</p>
-                    <p>{car.rentPerHour} Rent Per Hour /-</p>
+                    <p> Rent Per Hour /- {car.rentPerHour}</p>
                   </div>
 
                   <div>
