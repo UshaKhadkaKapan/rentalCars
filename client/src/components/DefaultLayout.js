@@ -11,7 +11,7 @@ const DefaultLayout = ({ children }) => {
         <a href="/">Home</a>
       </Menu.Item>
       <Menu.Item>
-        <a href="/bookingcar">Bookings</a>
+        <a href="/userBooking">Bookings</a>
       </Menu.Item>
       <Menu.Item>
         <a href="/admin">Admin</a>
