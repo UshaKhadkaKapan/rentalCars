@@ -53,7 +53,6 @@ const DefaultLayout = ({ children }) => {
       <div className="footer text-center">
         <hr />
         <p>Design and Developed by 💖</p>
-        <p>Usha Khadka</p>
       </div>
     </div>
   );
