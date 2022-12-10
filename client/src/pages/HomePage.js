@@ -14,7 +14,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getCarDetailsAction());
-  }, [dispatch]);
+  }, []);
 
   // when there will be changes on bookingcar
   useEffect(() => {
